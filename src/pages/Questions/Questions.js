@@ -148,7 +148,7 @@ function Questions(props) {
       <div>
         <div className="text-base mx-auto flex flex-col justify-center items-center font-medium leading-4 text-black my-4">
           <div
-            className=" text-center border-[1px] bg-[rgba(0, 0, 0, 0.05)] py-[15px] px-[30px] rounded-[15px] font-medium button text-[18px] leading-[22px] border-solid border-black cursor-pointer"
+            className=" text-center border-[1px]  bg-[rgba(0, 0, 0, 0.05)] py-[15px] px-[30px] rounded-[15px] font-medium button text-[18px] leading-[22px] border-solid border-black cursor-pointer"
             style={{
               backdropFilter: "blur(5px)",
               backgroundColor: "rgba(0, 0, 0, 0.05)",
@@ -162,7 +162,7 @@ function Questions(props) {
                 <div className="w-full overflow-x-auto">
                   <table className="w-full">
                     <thead>
-                      <tr className="text-md font-semibold  text-left text-gray-900 bg-gray-100 uppercase  border-gray-600">
+                      <tr className="text-md font-semibold  text-left text-gray-900 bg-gray-100 uppercase  border ">
                         <th className="px-4 py-3">S.no</th>
                         <th className="px-4 py-3">Question</th>
                         <th className="px-4 py-3">Explanation</th>
@@ -176,27 +176,29 @@ function Questions(props) {
                     <tbody className="bg-white">
                       {data &&
                         data.map((row, index) => (
-                          <tr className="text-gray-700" key={row.questions_id}>
-                            <td className="px-4 py-3 border">{index + 1}</td>
-                            <td className="px-4 py-3 border">{row.question}</td>
-                            <td className="px-4 py-3 border">
+                          <tr className="text-gray-600" key={row.questions_id}>
+                            <td className="px-4 py-3 border ">{index + 1}</td>
+                            <td className="px-4 py-3 border ">
+                              {row.question}
+                            </td>
+                            <td className="px-4 py-3 border ">
                               {row.questions_explanation}
                             </td>
-                            <td className="px-4 py-3 border">
+                            <td className="px-4 py-3 border ">
                               {row.questions_comments}
                             </td>
-                            <td className="px-4 py-3 border">
+                            <td className="px-4 py-3 border ">
                               {moment(row.created_at).format(
                                 "D MMMM YYYY, HH:mm:ss"
                               )}
                             </td>
-                            <td className="px-4 py-3 border">
+                            <td className="px-4 py-3 border ">
                               {moment(row.updated_at).format(
                                 "D MMMM YYYY, HH:mm:ss"
                               )}
                             </td>
 
-                            <td className="px-4 py-3 border">
+                            <td className="px-4 py-3 border ">
                               <button
                                 onClick={() => handleDelete(row.questions_id)}
                                 // className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded"
@@ -209,7 +211,7 @@ function Questions(props) {
                                 Delete
                               </button>
                             </td>
-                            <td className="px-4 py-3 border">
+                            <td className="px-4 py-3 border ">
                               <button
                                 onClick={() =>
                                   handleUpdate(row.questions_id, row)
@@ -232,7 +234,7 @@ function Questions(props) {
               </div>
             </section>
           ) : (
-            <h1 className="text-xl my-10 ">No Data Found</h1>
+            <h1 className="text-xl my-10">No Data Found</h1>
           )}
         </div>
       </div>
