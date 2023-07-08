@@ -1,7 +1,6 @@
 import InputType from "@/atoms/InputType";
 import TextArea from "@/atoms/TextArea";
 import React from "react";
-import { AiOutlineCloseCircle } from "react-icons/ai";
 
 function Forms(props) {
   return (
@@ -9,9 +8,9 @@ function Forms(props) {
       <div className="  ">
         <div className="flex md:mx-0 mx-auto rounded-[15px] w-[250px]   bg-white">
           <div className="absolute right-3 top-3 cursor-pointer p-2">
-            <AiOutlineCloseCircle
-              size={24}
-              className="cursor-pointer"
+            <img
+              src="./assets/images/Close.svg"
+              className="h-auto w-auto cursor-pointer"
               onClick={props.onClick}
             />
           </div>

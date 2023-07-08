@@ -4,7 +4,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import axios from "axios";
-import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
+// import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
+// import BootstrapTable from "react-bootstrap-table-next";
 import BootstrapTable from "react-bootstrap-table-next";
 
 import { ToastContainer, toast } from "react-toastify";

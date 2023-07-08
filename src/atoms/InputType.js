@@ -13,7 +13,6 @@ const InputType = ({
   onBlur,
   max,
   register,
-  defaultValue,
 }) => {
   return (
     <div className="flex flex-col w-full">
@@ -30,19 +29,10 @@ const InputType = ({
         onFocus={onFocus}
         onBlur={onBlur}
         max={max}
-        // defaultValue={defaultValue}
       />
 
       {error && (
         <div className="text-[#FF7171] text-[12px] flex items-center">
-          <div>
-            {" "}
-            <img
-              src="./assets/images/ValidationError.svg"
-              alt="error"
-              className="h-4 w-auto"
-            />
-          </div>
           <div className="ml-1">{error.message}</div>
         </div>
       )}
