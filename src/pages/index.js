@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import Home from "../pages/Home/Home";
+import Questions from "../pages/Questions/Questions";
 
 import { useState } from "react";
 
@@ -31,7 +31,11 @@ export default function App() {
         />
       </Head>
 
-      <Home isOpen={isOpen} openModal={openModal} CloseModal={CloseModal} />
+      <Questions
+        isOpen={isOpen}
+        openModal={openModal}
+        CloseModal={CloseModal}
+      />
     </>
   );
 }

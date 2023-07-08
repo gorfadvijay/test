@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import moment from "moment/moment";
 import FormOrganism from "@/components/FormOrganism/Formorganism";
 
-function Home(props) {
+function Questions(props) {
   const [data, setData] = useState([]);
   const [message, setMessage] = useState("");
   const [isError, setIsError] = useState("");
@@ -142,7 +142,6 @@ function Home(props) {
   useEffect(() => {
     fetchData();
   }, []);
-
   return (
     <>
       <ToastContainer />
@@ -157,46 +156,50 @@ function Home(props) {
             onClick={handleAdd}>
             <button>Add question</button>
           </div>
-          <div className="relative md:my-20 " id="WhoWeAre">
-            <div className="w-full md:px-10 px-5 md:max-w-[1400px] mx-auto items-start flex md:flex-row flex-col">
-              <div style={{ padding: "25px auto" }}>
-                {data.length === 0 ? (
-                  <h1>No data found</h1>
-                ) : (
-                  <div className="userdatatable items-center justify-center text-center ">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>S.no</th>
-                          <th>Question</th>
-                          <th>Explanation</th>
-                          <th>Comments</th>
-                          <th>Created At</th>
-                          <th>Updated At</th>
-                          <th>Delete</th>
-                          <th>Update</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {data.map((row, index) => (
-                          <tr key={row.questions_id}>
-                            <td>{index + 1}</td>
-                            <td>{row.question}</td>
-                            <td>{row.questions_explanation}</td>
-                            <td>{row.questions_comments}</td>
-                            <td>
+          {data && data.length !== 0 ? (
+            <section className="container mx-auto p-6 ">
+              <div className="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+                <div className="w-full overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="text-md font-semibold  text-left text-gray-900 bg-gray-100 uppercase  border-gray-600">
+                        <th className="px-4 py-3">S.no</th>
+                        <th className="px-4 py-3">Question</th>
+                        <th className="px-4 py-3">Explanation</th>
+                        <th className="px-4 py-3">Comments</th>
+                        <th className="px-4 py-3">Created At</th>
+                        <th className="px-4 py-3">Updated At</th>
+                        <th className="px-4 py-3">Delete</th>
+                        <th className="px-4 py-3">Update</th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-white">
+                      {data &&
+                        data.map((row, index) => (
+                          <tr className="text-gray-700" key={row.questions_id}>
+                            <td className="px-4 py-3 border">{index + 1}</td>
+                            <td className="px-4 py-3 border">{row.question}</td>
+                            <td className="px-4 py-3 border">
+                              {row.questions_explanation}
+                            </td>
+                            <td className="px-4 py-3 border">
+                              {row.questions_comments}
+                            </td>
+                            <td className="px-4 py-3 border">
                               {moment(row.created_at).format(
-                                "MMM Do YY, HH:mm:ss"
+                                "D MMMM YYYY, HH:mm:ss"
                               )}
                             </td>
-                            <td>
+                            <td className="px-4 py-3 border">
                               {moment(row.updated_at).format(
-                                "MMM Do YY, HH:mm:ss"
+                                "D MMMM YYYY, HH:mm:ss"
                               )}
                             </td>
-                            <td>
+
+                            <td className="px-4 py-3 border">
                               <button
                                 onClick={() => handleDelete(row.questions_id)}
+                                // className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded"
                                 style={{
                                   backgroundColor: "#F44336",
                                   borderRadius: "8px",
@@ -206,11 +209,12 @@ function Home(props) {
                                 Delete
                               </button>
                             </td>
-                            <td>
+                            <td className="px-4 py-3 border">
                               <button
                                 onClick={() =>
                                   handleUpdate(row.questions_id, row)
                                 }
+                                // className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
                                 style={{
                                   backgroundColor: "#3F51B5",
                                   borderRadius: "8px",
@@ -222,13 +226,14 @@ function Home(props) {
                             </td>
                           </tr>
                         ))}
-                      </tbody>
-                    </table>
-                  </div>
-                )}
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            </div>
-          </div>
+            </section>
+          ) : (
+            <h1 className="text-xl my-10 ">No Data Found</h1>
+          )}
         </div>
       </div>
       {props.isOpen && (
@@ -285,4 +290,4 @@ function Home(props) {
   );
 }
 
-export default Home;
+export default Questions;
