@@ -1,27 +1,127 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,500;0,600;1,400&display=swap"); */
+/* @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"); */
+html {
+  scroll-behavior: smooth;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background-color: #ffffff;
+  -webkit-background-color: #ffffff;
+}
+
+.tablehead {
+  box-shadow: 0px 8px 40px 0px #00000014;
+  font-size: 12px;
+}
+.userdatatable {
+  /* margin: 100px 20px; */
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.userdatatable .btn-group {
+  margin-top: 20px;
+}
+.userdatatable .btn-group button {
+  background-color: #1aa84c;
+  color: white;
+  cursor: pointer;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  margin: 5px 5px;
+  padding: 10px;
+  border: 1px;
+  border-radius: 50%;
+  font-size: 10px;
+}
+
+.header-class {
+  font-size: 12px;
+  text-transform: uppercase;
+  background-color: #ffffff;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* .carddiv {
+  height: auto;
+  width: 600px;
+  box-shadow: 0px 8px 40px 0px #00000014;
+  border-radius: 20px;
+} */
+
+tr {
+  margin: 20px 0;
+  /* height: 20px; */
+}
+.dropdown {
+  display: none !important;
+}
+
+.react-bootstrap-table .table {
+  overflow-x: auto !important;
+  /* display: block; */
+  border: 1px solid white;
+  border-collapse: separate;
+  border-spacing: 0 20px;
+  border-top: 10px solid white;
+  border-bottom: 0px solid white;
+  border-radius: 10px;
+  background-color: white;
+  width: 100%;
+}
+.react-bs-container-body tr {
+  border-top-style: none !important;
+  border-bottom: none;
+  height: 7px;
+}
+​ .react-bs-container-header tr {
+  border-bottom-style: none !important;
+}
+tbody tr {
+  height: 70px;
+  padding: 20px 10px;
+}
+.react-bootstrap-table-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* .row {
+  display: -ms-flexbox;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -306px;
+} */
+tr td:nth-child(1) {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+tr td:nth-last-child(1) {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+thead {
+  border-top: "none";
+}
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 0px solid #dee2e6;
+  border-top: 0px solid #dee2e6;
+  background-color: white;
+}
+.table thead {
+  background-color: #ffffff;
+}
+.custom-column-width {
+  width: 10px;
+  /* Add any additional styles if needed */
 }
