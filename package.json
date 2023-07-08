@@ -16,7 +16,6 @@
     "next": "13.4.9",
     "postcss": "8.4.25",
     "react": "18.2.0",
-    "react-bootstrap-table-next": "^4.0.3",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.45.1",
     "react-toastify": "^9.1.3",

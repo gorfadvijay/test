@@ -2,11 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-
 import axios from "axios";
-import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
-import BootstrapTable from "react-bootstrap-table-next";
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import moment from "moment/moment";
@@ -52,11 +48,12 @@ function Home(props) {
         : previousData.questions_explanation,
     },
   });
-  // get all question
+
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/v1/question");
-      setData(response.data);
+      const response = await axios.get("http://localhost:4201/api/v1/question");
+      console.log("responseresponseresponse", response);
+      setData(response.data.data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -70,7 +67,6 @@ function Home(props) {
     reset();
   };
 
-  // Set the ID of the question being updated
   const handleUpdate = (id, row) => {
     setUpdateId(id);
     setValue("question", row.question);
@@ -79,7 +75,6 @@ function Home(props) {
     props.openModal();
   };
 
-  // Reset the updateId when adding a new question
   const handleAdd = () => {
     setUpdateId(null);
     props.openModal();
@@ -89,7 +84,7 @@ function Home(props) {
     try {
       if (updateId) {
         const response = await axios.put(
-          `http://localhost:3000/api/v1/question/${updateId}`,
+          `http://localhost:4201/api/v1/question/${updateId}`,
           {
             question: data.question,
             questions_comments: data.questions_comments,
@@ -112,7 +107,7 @@ function Home(props) {
         };
 
         const response = await axios.post(
-          "http://localhost:3000/api/v1/question",
+          "http://localhost:4201/api/v1/question",
           requestData
         );
 
@@ -135,7 +130,7 @@ function Home(props) {
   const handleDelete = async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/api/v1/question/${id}`
+        `http://localhost:4201/api/v1/question/${id}`
       );
       toast.success("Question deleted successfully");
       fetchData();
@@ -144,132 +139,14 @@ function Home(props) {
     }
   };
 
-  const column = [
-    {
-      dataField: "",
-      text: "S.no",
-      formatter: (cell, row, rowIndex) => rowIndex + 1,
-    },
-
-    {
-      dataField: "question",
-      text: "question",
-      formatter: (cell, row) => (
-        <div
-          className="custom-column-width"
-          style={{ width: "100px", height: "auto" }}>
-          <div style={{ wordWrap: "break-word" }}>{row.question}</div>
-        </div>
-      ),
-    },
-
-    {
-      dataField: "questions_explanation",
-      text: "questions_explanation",
-      formatter: (cell, row) => (
-        <div
-          className="custom-column-width"
-          style={{ width: "100px", height: "auto" }}>
-          <div style={{ wordWrap: "break-word" }}>
-            {row.questions_explanation}
-          </div>
-        </div>
-      ),
-    },
-
-    {
-      dataField: "questions_comments",
-      text: "questions_comments",
-      formatter: (cell, row) => (
-        <div
-          className="custom-column-width"
-          style={{ width: "100px", height: "auto" }}>
-          <div style={{ wordWrap: "break-word" }}>{row.questions_comments}</div>
-        </div>
-      ),
-    },
-
-    {
-      dataField: "created_at",
-      text: "created_at",
-      formatter: (time, row) => {
-        return (
-          <div className="flex justify-center align-center text-center">
-            {moment(row.created_at).format("MMM Do YY, HH:mm:ss")}
-          </div>
-        );
-      },
-    },
-
-    {
-      dataField: "updated_at",
-      text: "updated_at",
-      formatter: (time, row) => {
-        return (
-          <div className="flex justify-center align-center text-center">
-            {moment(row.updated_at).format("MMM Do YY, HH:mm:ss")}
-          </div>
-        );
-      },
-    },
-
-    {
-      text: "Delete",
-      formatter: (cell, row) => (
-        <button
-          onClick={() => handleDelete(row.questions_id)}
-          style={{
-            backgroundColor: "#F44336",
-            borderRadius: "8px",
-            padding: "8px 16px",
-            color: "white",
-          }}>
-          Delete
-        </button>
-      ),
-    },
-
-    {
-      text: "Update",
-      formatter: (cell, row) => (
-        <button
-          onClick={() => handleUpdate(row.questions_id, row)}
-          style={{
-            backgroundColor: "#3F51B5",
-            borderRadius: "8px",
-            padding: "8px 16px",
-            color: "white",
-          }}>
-          Update
-        </button>
-      ),
-    },
-  ];
-
   useEffect(() => {
     fetchData();
   }, []);
 
-  const rowStyle = () => {
-    const style = {
-      backgroundColor: "white",
-      color: "black",
-      boxShadow: "0px 4px 24px rgba(0, 0, 0, 0.08)",
-      justifyContent: "center",
-      textAlign: "center",
-      alignItems: "center",
-      border: "10px solid white",
-      borderRadius: "20px",
-      fontSize: "14px",
-    };
-    return style;
-  };
   return (
     <>
       <ToastContainer />
-      <div
-        className="justify-center mt-12 w-full md:px-10 px-5  mx-auto items-center flex md:flex-row flex-col"
-        id="">
+      <div>
         <div className="text-base mx-auto flex flex-col justify-center items-center font-medium leading-4 text-black my-4">
           <div
             className=" text-center border-[1px] bg-[rgba(0, 0, 0, 0.05)] py-[15px] px-[30px] rounded-[15px] font-medium button text-[18px] leading-[22px] border-solid border-black cursor-pointer"
@@ -287,15 +164,66 @@ function Home(props) {
                   <h1>No data found</h1>
                 ) : (
                   <div className="userdatatable items-center justify-center text-center ">
-                    <BootstrapTable
-                      bootstrap4
-                      keyField="id"
-                      data={data}
-                      columns={column}
-                      rowStyle={rowStyle}
-                      headerClasses="header-class"
-                      bordered={false}
-                    />
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>S.no</th>
+                          <th>Question</th>
+                          <th>Explanation</th>
+                          <th>Comments</th>
+                          <th>Created At</th>
+                          <th>Updated At</th>
+                          <th>Delete</th>
+                          <th>Update</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {data.map((row, index) => (
+                          <tr key={row.questions_id}>
+                            <td>{index + 1}</td>
+                            <td>{row.question}</td>
+                            <td>{row.questions_explanation}</td>
+                            <td>{row.questions_comments}</td>
+                            <td>
+                              {moment(row.created_at).format(
+                                "MMM Do YY, HH:mm:ss"
+                              )}
+                            </td>
+                            <td>
+                              {moment(row.updated_at).format(
+                                "MMM Do YY, HH:mm:ss"
+                              )}
+                            </td>
+                            <td>
+                              <button
+                                onClick={() => handleDelete(row.questions_id)}
+                                style={{
+                                  backgroundColor: "#F44336",
+                                  borderRadius: "8px",
+                                  padding: "8px 16px",
+                                  color: "white",
+                                }}>
+                                Delete
+                              </button>
+                            </td>
+                            <td>
+                              <button
+                                onClick={() =>
+                                  handleUpdate(row.questions_id, row)
+                                }
+                                style={{
+                                  backgroundColor: "#3F51B5",
+                                  borderRadius: "8px",
+                                  padding: "8px 16px",
+                                  color: "white",
+                                }}>
+                                Update
+                              </button>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
                   </div>
                 )}
               </div>
