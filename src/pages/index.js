@@ -29,15 +29,6 @@ export default function App() {
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
           rel="stylesheet"
         />
-
-        <link
-          rel="stylesheet"
-          href="https://unpkg.com/react-bootstrap-table-next/dist/react-bootstrap-table2.min.css"
-        />
-
-        {/* <script src="https://unpkg.com/react/umd/react.production.min.js"></script>
-        <script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"></script>
-        <script src="https://unpkg.com/react-bootstrap-table-next/dist/react-bootstrap-table2.min.js"></script> */}
       </Head>
 
       <Home isOpen={isOpen} openModal={openModal} CloseModal={CloseModal} />
