@@ -35,9 +35,9 @@ export default function App() {
           href="https://unpkg.com/react-bootstrap-table-next/dist/react-bootstrap-table2.min.css"
         />
 
-        <script src="https://unpkg.com/react/umd/react.production.min.js"></script>
+        {/* <script src="https://unpkg.com/react/umd/react.production.min.js"></script>
         <script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"></script>
-        <script src="https://unpkg.com/react-bootstrap-table-next/dist/react-bootstrap-table2.min.js"></script>
+        <script src="https://unpkg.com/react-bootstrap-table-next/dist/react-bootstrap-table2.min.js"></script> */}
       </Head>
 
       <Home isOpen={isOpen} openModal={openModal} CloseModal={CloseModal} />
