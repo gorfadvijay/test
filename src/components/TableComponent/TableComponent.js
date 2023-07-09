@@ -2,6 +2,7 @@ import moment from "moment";
 import React from "react";
 
 function TableComponent({ data, handleDelete, handleUpdate }) {
+  console.log("datadatadatadatadatadata", data);
   return (
     <div>
       {" "}
@@ -15,6 +16,8 @@ function TableComponent({ data, handleDelete, handleUpdate }) {
                   <th className="px-4 py-3">Question</th>
                   <th className="px-4 py-3">Explanation</th>
                   <th className="px-4 py-3">Comments</th>
+                  <th className="px-4 py-3">reviewername</th>
+
                   <th className="px-4 py-3">Created At</th>
                   <th className="px-4 py-3">Updated At</th>
                   <th className="px-4 py-3">Delete</th>
@@ -34,10 +37,13 @@ function TableComponent({ data, handleDelete, handleUpdate }) {
                         {row.questions_comments}
                       </td>
                       <td className="px-4 py-3 border ">
-                        {moment(row.created_at).format("D MMMM YYYY, HH:mm:ss")}
+                        {row.reviewername ? row.reviewername : "Not Found"}
                       </td>
-                      <td className="px-4 py-3 border ">
-                        {moment(row.updated_at).format("D MMMM YYYY, HH:mm:ss")}
+                      <td className="px-4 py-3 border">
+                        {moment(row.created_at).format("D MMMM YYYY, h:mm a")}
+                      </td>
+                      <td className="px-4 py-3 border">
+                        {moment(row.updated_at).format("D MMMM YYYY, h:mm a")}
                       </td>
 
                       <td className="px-4 py-3 border ">

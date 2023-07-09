@@ -44,6 +44,19 @@ function Forms(props) {
               }
             />
           </div>
+          <div className="grid grid-cols-2 md:gap-5 gap-2 mt-5 t">
+            <InputType
+              id="reviewername"
+              name="reviewername"
+              type="text"
+              placeholder="Reviewer Name"
+              register={props.register}
+              error={props.errors.reviewername}
+              defaultValue={
+                props.isNewQuestion ? "" : props.previousData.reviewername
+              }
+            />
+          </div>
 
           <TextArea
             id="questions_explanation"

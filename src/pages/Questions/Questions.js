@@ -47,9 +47,13 @@ function Questions(props) {
       questions_explanation: isNewQuestion
         ? ""
         : previousData.questions_explanation,
+      reviewername: isNewQuestion ? "" : previousData.reviewername,
     },
   });
 
+  useEffect(() => {
+    fetchData();
+  }, []);
   const fetchData = async () => {
     try {
       const response = await axios.get("http://localhost:4201/api/v1/question");
@@ -69,10 +73,13 @@ function Questions(props) {
   };
 
   const handleUpdate = (id, row) => {
+    console.log("handleUpdatehandleUpdate", row);
     setUpdateId(id);
     setValue("question", row.question);
     setValue("questions_comments", row.questions_comments);
     setValue("questions_explanation", row.questions_explanation);
+    setValue("reviewername", row.reviewername);
+
     props.openModal();
   };
 
@@ -82,6 +89,7 @@ function Questions(props) {
   };
 
   const onSubmit = async (data) => {
+    console.log("onSubmitonSubmitonSubmitonSubmit", data);
     try {
       if (updateId) {
         const response = await axios.put(
@@ -90,6 +98,7 @@ function Questions(props) {
             question: data.question,
             questions_comments: data.questions_comments,
             questions_explanation: data.questions_explanation,
+            reviewername: data.reviewername,
           }
         );
 
@@ -105,8 +114,9 @@ function Questions(props) {
           question: data.question,
           questions_explanation: data.questions_explanation,
           questions_comments: data.questions_comments,
+          reviewername: data.reviewername,
         };
-
+        console.log("requestData", requestData);
         const response = await axios.post(
           "http://localhost:4201/api/v1/question",
           requestData
@@ -140,9 +150,6 @@ function Questions(props) {
     }
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
   return (
     <>
       <ToastContainer />
