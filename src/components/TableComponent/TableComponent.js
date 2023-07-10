@@ -11,12 +11,12 @@ function TableComponent({ data, handleDelete, handleUpdate }) {
           <div className="w-full overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="text-md font-semibold  text-left text-gray-900 bg-gray-100 uppercase  border ">
+                <tr className="text-md font-semibold  text-left text-gray-900 bg-gray-100 capitalize  border ">
                   <th className="px-4 py-3">S.no</th>
                   <th className="px-4 py-3">Question</th>
                   <th className="px-4 py-3">Explanation</th>
                   <th className="px-4 py-3">Comments</th>
-                  <th className="px-4 py-3">reviewername</th>
+                  <th className="px-4 py-3">reviewer</th>
 
                   <th className="px-4 py-3">Created At</th>
                   <th className="px-4 py-3">Updated At</th>
@@ -49,7 +49,6 @@ function TableComponent({ data, handleDelete, handleUpdate }) {
                       <td className="px-4 py-3 border ">
                         <button
                           onClick={() => handleDelete(row.questions_id)}
-                          // className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded"
                           style={{
                             backgroundColor: "#F44336",
                             borderRadius: "8px",
@@ -62,7 +61,6 @@ function TableComponent({ data, handleDelete, handleUpdate }) {
                       <td className="px-4 py-3 border ">
                         <button
                           onClick={() => handleUpdate(row.questions_id, row)}
-                          // className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
                           style={{
                             backgroundColor: "#3F51B5",
                             borderRadius: "8px",
