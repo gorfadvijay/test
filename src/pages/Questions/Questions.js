@@ -175,50 +175,22 @@ function Questions(props) {
           )}
         </div>
       </div>
-      {props.isOpen && (
+      {props.isOpen && message !== "Success" && !isError && (
         <div className="bg-black bg-opacity-50 fixed inset-0 z-50 w-full h-full flex justify-center items-center px-4">
           <div>
             <div>
               <div className="container mx-auto">
                 <div className="relative flex flex-col md:flex-row w-full md:man-h-[30rem] h-full md:max-w-[1100px] bg-white rounded-[30px] mx-auto shadow-lg">
-                  <div className="bg-[#D7E9FF] rounded-[30px] md:max-w-[450px] md:flex flex-col items-start justify-start py-12 px-12 bg-no-repeat bg-cover bg-center hidden relative">
-                    <div className="mt-3">
-                      {" "}
-                      <div className="flex mx-auto justify-center absolute left-[40%]">
-                        <div className="bg-[#3AFF58] h-[100px] w-[100px]  rounded-full blur-[70px] "></div>
-                      </div>
-                      <img
-                        src="./assets/images/FormIcon.svg"
-                        className="h-[150px] w-auto my-3"
-                      />
-                      <div className="flex justify-between ">
-                        <h1 className="text-primary text-[55px] font-extrabold leading-[55px] mt-2">
-                          Let’s Get Started
-                        </h1>
-                        <div className="bg-[#612ADB] h-[150px] w-[150px] mix-blend  rounded-l-full blur-[60px]  right-[5rem] overflow-hidden absolute bg-opacity-50"></div>
-                      </div>
-                      <div className="flex">
-                        <p className="text-primary text-[18px] leading-[30px] font-semibold mt-3">
-                          Please fill the form with your requirement.!
-                        </p>
-                        <div className="flex mx-auto justify-end absolute left-[55%] ">
-                          <div className="bg-[#3AFF58] h-[100px] w-[100px] top-[10%]  rounded-full blur-[70px] "></div>
-                        </div>
-                      </div>
-                    </div>
+                  <div className="relative w-full z-[1000]  md:max-w-[750px] md:py-8 py-4 md:px-8 px-4 text-[18px] leading-[30px] font-semibold overflow-hidden mx-auto flex  flex-col justify-center">
+                    <FormOrganism
+                      onSubmit={handleSubmit(onSubmit)}
+                      register={register}
+                      errors={errors}
+                      isNewQuestion={isNewQuestion}
+                      previousData={previousData}
+                      onClick={props.CloseModal}
+                    />
                   </div>
-                  {message !== "Success" && !isError && (
-                    <div className="relative w-full z-[1000]  md:max-w-[750px] md:py-8 py-4 md:px-8 px-4 text-[18px] leading-[30px] font-semibold overflow-hidden mx-auto flex  flex-col justify-center">
-                      <FormOrganism
-                        onSubmit={handleSubmit(onSubmit)}
-                        register={register}
-                        errors={errors}
-                        isNewQuestion={isNewQuestion}
-                        previousData={previousData}
-                        onClick={props.CloseModal}
-                      />
-                    </div>
-                  )}
                 </div>
               </div>
             </div>
